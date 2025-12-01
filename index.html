@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIM模型库</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>BIM模型库</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="category.html">分类</a></li>
+                <li><a href="about.html">关于</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="search-bar">
+            <input type="text" id="search-input" placeholder="搜索零件...">
+            <button id="search-btn">搜索</button>
+        </section>
+
+        <!-- ★★★ 关键补充 — 自动加载零件展示区 ★★★ -->
+        <section class="part-gallery" id="part-gallery"></section>
+
+        <script>
+            const searchInput = document.getElementById("search-input");
+            const searchBtn = document.getElementById("search-btn");
+
+            function goSearch() {
+                const keyword = searchInput.value.trim();
+                if (keyword) {
+                    window.location.href = `search.html?keyword=${encodeURIComponent(keyword)}`;
+                }
+            }
+
+            searchBtn.addEventListener("click", goSearch);
+            searchInput.addEventListener("keyup", function(event) {
+                if (event.key === "Enter") {
+                    goSearch();
+                }
+            });
+        </script>
+        
+        <script src="js/script.js"></script>
+    </main>
+
+    <footer>
+        <p>© 2025 BIM模型库</p>
+    </footer>
+</body>
+</html>
