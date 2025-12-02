@@ -3,6 +3,7 @@ const partsData = {
     1: { 
         name: "零件1", 
         img: "images/part1.png", 
+        model: "models/brutalist_building.glb",
         desc: "用于主体结构连接与受力传递，可应用于梁柱节点、桁架拼接与装配式结构吊装定位。具备较高强度与稳定性，适合在结构深化设计及施工模拟中使用。",
         category:"结构件" 
     },
@@ -10,6 +11,7 @@ const partsData = {
     2: { 
         name: "零件2", 
         img: "images/part2.png", 
+        model: "models/city.glb",
         desc: "用于基础与主体构件的二次固定与安装加强，可在预制构件拼装、钢结构连接处使用。支持LOD350-LOD400深化，适用于施工工艺演示与碰撞检测。",
         category:"结构件" 
     },
@@ -17,6 +19,7 @@ const partsData = {
     3: { 
         name: "零件3", 
         img: "images/part3.png", 
+        model: "models/painterly_cottage.glb",
         desc: "适用于机电安装系统中设备布置、机位定位与维护空间校核，可用于风机、泵阀类设备模型挂载、支撑优化及运维规划。",
         category:"设备件" 
     },
@@ -24,6 +27,7 @@ const partsData = {
     4: { 
         name: "零件4", 
         img: "images/part4.png", 
+        model: "models/asia_building.glb",
         desc: "用于室内装饰与围护构件布置，可应用于幕墙挂板、造型装饰件、吊顶系统深化。适合效果图渲染展示与装饰施工模拟。",
         category:"装修件" 
     }
@@ -43,7 +47,8 @@ function loadPartDetail() {
     const img = document.getElementById("part-img");
     const name = document.getElementById("part-name");
     const desc = document.getElementById("part-desc");
-    const cat  = document.getElementById("part-category"); // 新增 分类节点
+    const cat  = document.getElementById("part-category"); // 分类节点
+    const modelViewer = document.getElementById("part-3d"); 
 
     if (!img || !name || !desc) return;
 
@@ -64,6 +69,12 @@ function loadPartDetail() {
         // ⭐ 显示类别
         if (cat) cat.innerHTML = `所属分类：<a href="category.html?cat=${encodeURIComponent(part.category)}">${part.category}</a>`;
 
+        // ⭐ 显示 3D 模型
+        if (modelViewer && part.model) {
+            modelViewer.src = part.model;
+            modelViewer.alt = `${part.name} 3D 模型`;
+        }
+        
     } else {
         name.textContent = "未找到零件";
         desc.textContent = "该零件ID不存在。";

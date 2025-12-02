@@ -154,7 +154,13 @@ nav ul li a:hover {
 .part-detail a:hover {
     text-decoration: underline;
 }
-
+model-viewer {
+    width: 100%;
+    height: 400px;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 /* ============ 分类页标题 ============ */
 #category-title {
     text-align: center;
