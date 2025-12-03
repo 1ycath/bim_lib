@@ -30,7 +30,23 @@ const partsData = {
         model: "models/asia_building.glb",
         desc: "用于室内装饰与围护构件布置，可应用于幕墙挂板、造型装饰件、吊顶系统深化。适合效果图渲染展示与装饰施工模拟。",
         category:"装修件" 
-    }
+    },
+
+    5: { 
+        name: "示例建筑", 
+        img: "images/模型剖面截图.jpg",
+        model: "models/示例建筑.glb",
+        desc: "零件5的描述信息。",
+        category:"示例建筑" 
+    },
+
+    6: { 
+        name: "钢柱", 
+        img: "images/钢柱.png",    
+        model: "models/钢柱.glb",
+        desc: "零件6的描述信息。",
+        category:"柱" 
+    },
 };
 
 
