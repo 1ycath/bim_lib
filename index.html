@@ -26,25 +26,6 @@
 
         <!-- ★★★ 关键补充 — 自动加载零件展示区 ★★★ -->
         <section class="part-gallery" id="part-gallery"></section>
-
-        <script>
-            const searchInput = document.getElementById("search-input");
-            const searchBtn = document.getElementById("search-btn");
-
-            function goSearch() {
-                const keyword = searchInput.value.trim();
-                if (keyword) {
-                    window.location.href = `search.html?keyword=${encodeURIComponent(keyword)}`;
-                }
-            }
-
-            searchBtn.addEventListener("click", goSearch);
-            searchInput.addEventListener("keyup", function(event) {
-                if (event.key === "Enter") {
-                    goSearch();
-                }
-            });
-        </script>
         
         <script src="js/script.js"></script>
     </main>

@@ -18,27 +18,45 @@
         </nav>
     </header>
 
-    <main>
-        <section class="part-detail">
-            <img id="part-img" src="" alt="零件" class="part-detail-img">
-            <h2 id="part-name">零件名称</h2>
-            <p id="part-desc">零件描述</p>
-            <p id="part-category">零件分类</p>
+<main>
+    <section class="detail-card">
 
-            <!-- 新增 3D 模型展示 -->
-        <model-viewer id="part-3d" 
-                    src="" 
+        <div class="detail-two-columns">
+
+            <!-- 左侧：3D 视图 -->
+            <div class="detail-left">
+                <model-viewer id="part-3d" 
+                    src=""
                     alt="3D 模型预览"
                     camera-controls
                     auto-rotate
-                    style="width:100%;height:400px;margin-top:20px;"
                     shadow-intensity="1"
-                    exposure="0.8"
-                    environment-image="https://modelviewer.dev/shared-assets/environments/neutral.hdr"
-                    >
-        </model-viewer>
-        </section>
-    </main>
+                    style="width: 100%; height:450px;">
+                </model-viewer>
+            </div>
+
+            <!-- 右侧：文字内容 -->
+            <div class="detail-right">
+                <div class="info-row">  
+
+                    <h2 id="part-name">零件名称</h2>
+                    <span id="part-category" class="detail-tag">分类</span>
+                    <img id="part-img" src="" alt="图片" class="detail-img-small">
+
+                </div>
+
+                <h3>零件简介</h3>
+                <p id="part-desc">这里显示该零件的详细描述内容。</p>
+                    <div class="download-btn-container">
+                        <button id="download-btn">下载模型</button>
+                    </div>
+
+            </div>
+
+        </div>
+
+    </section>
+</main>
 
     <footer>
         <p>© 2025 BIM模型库</p>

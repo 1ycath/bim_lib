@@ -97,7 +97,29 @@ function loadPartDetail() {
         img.style.display = "none";
         if (cat) cat.style.display = "none";
     }
+
+    // 绑定下载按钮
+    const downloadBtn = document.getElementById("download-btn");
+    if (downloadBtn && part && part.model) {
+        downloadBtn.onclick = () => {
+            const a = document.createElement("a");
+            a.href = part.model;                 // 指向 glb 文件
+            a.download = `${part.name}.glb`;     // 下载文件名
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+
+            // 提示用户下载已触发
+            alert(`已开始下载 ${part.name}.glb`);
+        };
+    
+    }
+
+
 }
+
+
+
 
 // =================================================================
 // ② 搜索页逻辑 search.html?keyword=xxx   页面直接生成搜索结果
@@ -130,8 +152,8 @@ function loadSearchPage() {
                 <a href="part-detail.html?id=${id}">
                     <img src="${p.img}" alt="${p.name}">
                     <h3>${p.name}</h3>
-                    <p>${p.desc}</p>
-                    <span class="tag">分类：${p.category}</span>
+                </a>
+                <a class="tag" href="category.html?cat=${p.category}">分类：${p.category}
                 </a>
             </div>`;
         }
@@ -162,12 +184,36 @@ function loadIndexGallery() {
         <div class="part-item">
             <a href="part-detail.html?id=${id}">
                 <img src="${p.img}">
-                <p>${p.name}</p>
-                <span class="tag"><a href="category.html?cat=${p.category}">${p.category}</a></span>
+                <h3>${p.name}</h3>
             </a>
+                <a class="tag" href="category.html?cat=${p.category}">
+                <span>分类：${p.category}</span></a>
         </div>`;
     }
     gallery.innerHTML=html;
+
+
+    // ========== 绑定首页搜索功能 ==========
+    const searchInput = document.getElementById("search-input");
+    const searchBtn = document.getElementById("search-btn");
+
+    function goSearch() {
+        const keyword = searchInput.value.trim();
+        if (keyword) {
+            window.location.href = `search.html?keyword=${encodeURIComponent(keyword)}`;
+        }
+    }
+
+    searchBtn.addEventListener("click", goSearch);
+    searchInput.addEventListener("keyup", function(event) {
+        if (event.key === "Enter") {
+            goSearch();
+        }
+    });    
+
+
+
+
 }
 
 function loadCategoryPage() {
@@ -205,7 +251,10 @@ function loadCategoryPage() {
             <div class="part-item">
                 <a href="part-detail.html?id=${id}">
                     <img src="${p.img}">
-                    <p>${p.name}</p>
+                    <h3>${p.name}</h3>
+                </a>
+                <a class="tag" href="category.html?cat=${p.category}">
+                    分类：${p.category}
                 </a>
             </div>`;
         }
